@@ -30,7 +30,6 @@ step = 0.2
 while start <= end:
     temp_collection.append(start)
     start += step
-temp_collection = [0.0]
 
 pdepth_list = [1.0, 2.0, 3.0]
 fv_list = [1.0, 3.0, 5.0, 7.0, 9.0]
