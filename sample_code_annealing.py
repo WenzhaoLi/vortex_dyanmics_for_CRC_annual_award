@@ -4,7 +4,9 @@ from work_queue import *
 import os
 import sys
 
-project_name = "vortex_viscosity_2_1"
+# -------------------------- Define simulation parameters -------------------------
+
+project_name = "vortex_annealing"
 
 max_n = 100
 
@@ -22,11 +24,6 @@ while temperature >= 0:
     temp_list.append(temperature)
     temperature -= 1
 
-# pdepth_list = [1.0, 2.0, 3.0]
-# fv_list = [1.0, 3.0, 5.0, 7.0, 9.0]
-# fp_list = [1.0, 3.0, 5.0]
-# pr_list = [1.0]
-
 pdepth_list = [0.6, 0.8, 1.0, 1.3]
 fv_list = [0.8, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0]
 fp_list = [0.8]
@@ -41,11 +38,14 @@ if __name__ == '__main__':
 
     port = 0
 
+# -------------------------- Create a Work Queue instance --------------------------
     q = WorkQueue(port)
     q.specify_name(project_name)
     q.blacklist("d8civy138.crc.nd.edu")
     print "listening on port %d..." % q.port
-
+    
+# -------------------------- Submit initial jobs --------------------------
+ 
     for pdepth in pdepth_list:
         for fv in fv_list:
             for fp in fp_list:
@@ -74,6 +74,9 @@ if __name__ == '__main__':
                         print("submitted task (id# %d): %s" % (taskid, t.command))
 
     print("waiting for tasks to complete...")
+
+    
+# -------------------------- Continue to submit jobs if the temperature is greater than zero --------------------------
 
     while not q.empty():
         t = q.wait(1)
