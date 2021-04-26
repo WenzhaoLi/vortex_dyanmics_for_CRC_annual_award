@@ -10,6 +10,20 @@ Superconductivity is the quantum phenomenon where the electric resistance of the
 Superconducting vortices are the intrinsic topological defects in superconductors and the behavior of them is critical to the applications of superconductivity.
 Superconducting vortex dynamics can be described by Langevin type equations of motion and studied using molecular dynamics (MD) simulations. (I also attached my PhD thesis in this repo. Please refer to my thesis if you are interested in the physics details of the projcets.) 
 
+With the paralell computing methods we adopted and the computing power provided by CRC, we managed to consume more than 8 million CPU-hours in 2020. 
+One of our simulation projects has been accepted by the physics journal Applied Physics Letter (APL) and the other one is submitted to Physics Review B (PRB).
+(These two projects are in collaboration with Los Alamos National Laboratory.)
+
+Publication on Applied Physics Letter (APL):
+https://aip.scitation.org/doi/10.1063/5.0045584
+
+Submission to Physics Review B (PRB):
+https://arxiv.org/abs/2012.09937
+
+<img src="https://user-images.githubusercontent.com/19979625/116009251-6a55c880-a5e6-11eb-91d5-ca0b18f605a8.png" width="300">
+
+(Vortices in a superconductor. The dynamics of superconducting vortex matter can be studied using molecular dynamics (MD) simulation.)
+
 ## Vortex Dynamics with Parallel Computing
 
 In the past few years, I have been developing parallel computing algorithms on our Notre Dame Condor pool to study superconducting vortex dynamics using the Work Queue APIs. 
@@ -28,14 +42,7 @@ The idea is that we have thousands of different configurations running simultane
 
 You may ask why not include the whole binary search process in one job submission. The reason is if we do that, one job submission may take up to days or even weeks to finish. Since the Condor pool is opportunistic, our jobs may be kicked out anytime and therefore we want to submit short or reasonably long jobs instead of very long jobs. (A long job may never get finished on Condor pool.)
 
-Here in this repo, the binary search script is included for reference. Besides the binary search, I also developed a lot of other algorithms to include complicated workflows with parallel computing at the same time. Please let me know if you want to see more examples. With this method, we are able to generate a lot of useful simulation data and efficiently harness resources from the Condor pool. This snapshot was captured in early 2021. It roughly shows the Condor pool usage in 2020. In the past year, we have managed to generate 8 million CPU-hours’ worth of simulation data. One of our simulation projects has been accepted by the physics journal Applied Physics Letter (APL) and the other one is submitted to Physics Review B (PRB).
-
-Publication on Applied Physics Letter (APL):
-https://aip.scitation.org/doi/10.1063/5.0045584
-
-Submission to Physics Review B (PRB):
-https://arxiv.org/abs/2012.09937
+Here in this repo, the binary search script is included for reference. Besides the binary search, I also developed a lot of other algorithms to include complicated workflows with parallel computing at the same time. Please let me know if you want to see more examples. With this method, we are able to generate a lot of useful simulation data and efficiently harness resources from the Condor pool. This snapshot was captured in early 2021. It roughly shows the Condor pool usage in 2020. In the past year, we have managed to generate 8 million CPU-hours’ worth of simulation data. 
 
 <img src="https://user-images.githubusercontent.com/19979625/115816247-84b15b80-a3c6-11eb-9575-e4bac86e73a8.png" width="550">
-
 
