@@ -9,11 +9,11 @@ q = WorkQueue(port)
 q.specify_name(project_name)
 print "listening on port %d..." % q.port
 
-# -------------------define simulation related parameters for different configurations---------------
+# ------------------- Define simulation related parameters for different configurations ---------------
 
-type = "2"
-project_name = "vortex_resistance_current_type" + type
-data_dir = "/afs/crc.nd.edu/user/w/wli12/viscosity_data/type" + type + "/"
+the_type = "2"
+project_name = "vortex_resistance_current_type" + the_type
+data_dir = "/afs/crc.nd.edu/user/w/wli12/viscosity_data/type" + the_type + "/"
 
 max_n = 200
 n_step = 2
@@ -36,7 +36,7 @@ fv_list = [1.0, 3.0, 5.0, 7.0, 9.0]
 fp_list = [1.0, 3.0, 5.0]
 pr_list = [1.0]
 
-# --------------------binary search parameters---------------------
+# -------------------- Define binary search parameters ---------------------
 
 precision = 0.01
 
@@ -50,7 +50,7 @@ left_current = {}
 right_current = {}
 task_n = {}
 
-# --------------------submit the initial jobs with different configurations---------------------
+# -------------------- Submit the initial jobs with different configurations ---------------------
 
 for n in n_list:
 
@@ -88,7 +88,7 @@ for n in n_list:
                         print "submitted task (id# %d): %s" % (taskid, t.command)
 
 
-# --------------------incorporate binary search with the Work Queue APIs---------------------
+# -------------------- Incorporate binary search with the Work Queue APIs ---------------------
 
 while not q.empty():
     t = q.wait(1)
@@ -105,7 +105,7 @@ while not q.empty():
                 velocity = float(f.readline())
             os.system('rm {}'.format(outfile))
 
-# -------------master performs binary search based on the output from the workers--------------
+# ------------- Performs binary search for each configuration based on the output from the workers --------------------
 
             mid = (right_current[this] + left_current[this]) / 2
             if velocity > target_velocity:
